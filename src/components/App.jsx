@@ -1,10 +1,12 @@
 import { Box } from './Box';
 import { nanoid } from 'nanoid';
-import { Title } from './App.styled';
+import { Title, WrapList } from './App.styled';
+import { GlobalStyle } from './GlobalStyle';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
+import { Layout } from './Layout/Layout';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -46,17 +48,23 @@ export const App = () => {
 
   getVisibleContact();
   return (
-    <Box as="main" width="1024px" mx="auto" bg="#63c6c6" p="20px">
-      <ContactForm onSubmit={addContacts} />
-      <Title>Contacts</Title>
-      <Filter value={filter} onChange={changeFilter} />
-      {contacts.length > 0 && (
-        <ContactList
-          contacts={getVisibleContact()}
-          onDeleteContact={deleteContacts}
-        />
-      )}
-      <ToastContainer theme="colored" autoClose={3000} />
+    <Box bg="#E8E8E8" height="100vh">
+      <Box as="main" width="1024px" mx="auto">
+        <Layout />
+        <ContactForm onSubmit={addContacts} />
+        <WrapList>
+          <Title>Contacts</Title>
+          <Filter value={filter} onChange={changeFilter} />
+          {contacts.length > 0 && (
+            <ContactList
+              contacts={getVisibleContact()}
+              onDeleteContact={deleteContacts}
+            />
+          )}
+        </WrapList>
+        <ToastContainer theme="colored" autoClose={3000} />
+        <GlobalStyle />
+      </Box>
     </Box>
   );
 };

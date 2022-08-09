@@ -3,11 +3,14 @@ import { Form, Field } from 'formik';
 
 export const Title = styled.h1`
   font-size: 30px;
-  color: white;
+  color: black;
   margin: 0;
   margin-bottom: 20px;
+  padding-bottom: 20px;
 
   text-align: center;
+
+  border-bottom: 3px solid #1e90ff;
 `;
 
 export const FormContact = styled(Form)`
@@ -20,36 +23,45 @@ export const Text = styled.p`
 `;
 
 export const Btn = styled.button`
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   margin: 0 auto;
+  background-color: #00bfff;
 
   width: 170px;
   padding: 5px;
-  font-size: 16px;
   border: 1px solid black;
   border-radius: 5px;
-  box-shadow: 5px 5px 15px 0px #000000;
 
-  color: orange;
+  color: white;
   cursor: pointer;
   :hover,
   :focus {
-    color: red;
+    color: #7fffd4;
+  }
+  svg {
+    width: 25px;
+    height: 25px;
   }
 `;
 
 export const FormInput = styled(Field)`
-  height: 25px;
-  margin-bottom: 20px;
+  height: 30px;
 
-  outline: none;
-  border: none;
-
+  background-color: #dcdcdc;
+  border: 1px solid #c0c0c0;
   border-radius: 5px;
-  box-shadow: 5px 5px 15px 0px #000000;
+  outline: none;
 `;
 
 export const ErrorForm = styled.div`
-  color: red;
-  margin-bottom: 10px;
+  color: #fa8072;
+`;
+
+export const Wrap = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
 `;

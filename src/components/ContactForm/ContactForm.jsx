@@ -7,9 +7,11 @@ import {
   FormContact,
   FormInput,
   ErrorForm,
+  Wrap,
 } from './ContactForm.styled';
 import * as yup from 'yup';
 import { Box } from 'components/Box';
+import { BiPlus } from 'react-icons/bi';
 
 const values = { name: '', number: '' };
 
@@ -34,30 +36,39 @@ export const ContactForm = ({ onSubmit }) => {
   return (
     <Box
       as="section"
-      mb="20px"
+      mb="40px"
       mx="auto"
-      width="400px"
+      width="600px"
       border="1px solid"
-      p="20px"
+      py="30px"
+      borderRadius="10px"
+      bg="white"
+      borderColor="#DCDCDC"
     >
-      <Title>Phonebook</Title>
+      <Title>Added Form</Title>
       <Formik
         initialValues={values}
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
         <FormContact>
-          <label>
-            <Text>Name</Text>
-            <FormInput type="text" name="name" />
-            <ErrorMessage name="name" component={ErrorForm} />
-          </label>
-          <label>
-            <Text>Number</Text>
-            <FormInput type="tel" name="number" />
-            <ErrorMessage name="number" component={ErrorForm} />
-          </label>
-          <Btn type="submit">Add contact</Btn>
+          <Wrap>
+            <label>
+              <Text>Name</Text>
+              <FormInput type="text" name="name" />
+              <ErrorMessage name="name" component={ErrorForm} />
+            </label>
+            <label>
+              <Text>Number</Text>
+              <FormInput type="tel" name="number" />
+              <ErrorMessage name="number" component={ErrorForm} />
+            </label>
+          </Wrap>
+
+          <Btn type="submit">
+            <BiPlus />
+            <span>Add contact</span>
+          </Btn>
         </FormContact>
       </Formik>
     </Box>

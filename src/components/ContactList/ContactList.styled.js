@@ -10,30 +10,35 @@ export const List = styled.ul`
 
 export const Item = styled.li`
   display: flex;
-  list-style-type: none;
   justify-content: space-between;
+  list-style-type: none;
   width: 400px;
   align-items: center;
-  justify-content: space-around;
 `;
 
 export const Text = styled.p`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
   margin: 0;
+  svg {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    :hover {
+      color: #7fffd4;
+    }
+  }
 `;
 
 export const Btn = styled.button`
-  width: 100px;
-
   padding: 5px;
-  font-size: 16px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px 0px #000000;
 
   color: orange;
   cursor: pointer;
   :hover,
   :focus {
-    color: red;
+    color: #7fffd4;
   }
 `;

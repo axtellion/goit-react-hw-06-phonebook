@@ -1,18 +1,20 @@
 import { Box } from 'components/Box';
-import { List, Text, Item, Btn } from './ContactList.styled';
+import { List, Text, Item } from './ContactList.styled';
 import PropTypes from 'prop-types';
+import { FiTrash2 } from 'react-icons/fi';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
   return (
-    <Box>
+    <Box display="flex" justifyContent="center">
       <List>
         {contacts.map(({ id, name, number }) => {
           return (
             <Item key={id}>
+              <Text>{name}:</Text>
               <Text>
-                {name}: {number}
+                {number}
+                <FiTrash2 onClick={() => onDeleteContact(id)} />
               </Text>
-              <Btn onClick={() => onDeleteContact(id)}>Delete</Btn>
             </Item>
           );
         })}
