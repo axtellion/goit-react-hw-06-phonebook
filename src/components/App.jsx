@@ -12,7 +12,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { add } from './redux/itemsSlice';
+import { add } from '../redux/itemsSlice';
 
 export const App = () => {
   const dispatch = useDispatch();

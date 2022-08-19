@@ -3,7 +3,7 @@ import { List, Text, Item } from './ContactList.styled';
 import PropTypes from 'prop-types';
 import { FiTrash2 } from 'react-icons/fi';
 import { useDispatch } from 'react-redux';
-import { remove } from 'components/redux/itemsSlice';
+import { remove } from 'redux/itemsSlice';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
   const dispatch = useDispatch();

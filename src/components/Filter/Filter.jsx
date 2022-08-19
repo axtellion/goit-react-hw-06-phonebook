@@ -1,6 +1,6 @@
 import { FilterInput, Text, FilterLabel } from './Filter.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { chengeFilter } from 'components/redux/itemsSlice';
+import { chengeFilter } from 'redux/itemsSlice';
 
 export const Filter = () => {
   const dispatch = useDispatch();
