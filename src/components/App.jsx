@@ -42,20 +42,16 @@ export const App = () => {
   getVisibleContact();
 
   return (
-    <Box bg="#E8E8E8">
-      <Box as="main" width="1024px" mx="auto">
-        <Layout />
-        <ContactForm onSubmit={addContacts} />
-        <WrapList>
-          <Title>Contacts</Title>
-          <Filter />
-          {contacts.length > 0 && (
-            <ContactList contacts={getVisibleContact()} />
-          )}
-        </WrapList>
-        <ToastContainer theme="colored" autoClose={3000} />
-        <GlobalStyle />
-      </Box>
+    <Box as="main" width="1024px" mx="auto">
+      <Layout />
+      <ContactForm onSubmit={addContacts} />
+      <WrapList>
+        <Title>Contacts</Title>
+        <Filter />
+        <ContactList contacts={getVisibleContact()} />
+      </WrapList>
+      <ToastContainer theme="colored" autoClose={3000} />
+      <GlobalStyle />
     </Box>
   );
 };
