@@ -21,6 +21,7 @@ export const itemsSlice = createSlice({
 const persistConfig = {
   key: 'contacts',
   storage,
+  blacklist: ['filter'],
 };
 
 export const persistedItemsReducer = persistReducer(
