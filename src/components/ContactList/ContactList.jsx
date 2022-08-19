@@ -2,8 +2,12 @@ import { Box } from 'components/Box';
 import { List, Text, Item } from './ContactList.styled';
 import PropTypes from 'prop-types';
 import { FiTrash2 } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { remove } from 'components/redux/itemsSlice';
 
 export const ContactList = ({ contacts, onDeleteContact }) => {
+  const dispatch = useDispatch();
+
   return (
     <Box display="flex" justifyContent="center">
       <List>
@@ -13,7 +17,7 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
               <Text>{name}:</Text>
               <Text>
                 {number}
-                <FiTrash2 onClick={() => onDeleteContact(id)} />
+                <FiTrash2 onClick={() => dispatch(remove(id))} />
               </Text>
             </Item>
           );
@@ -24,6 +28,5 @@ export const ContactList = ({ contacts, onDeleteContact }) => {
 };
 
 ContactList.propTypes = {
-  onDeleteContact: PropTypes.func.isRequired,
   contacts: PropTypes.array.isRequired,
 };

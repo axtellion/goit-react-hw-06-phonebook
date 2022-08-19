@@ -11,12 +11,14 @@ import { Layout } from './Layout/Layout';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { useLocalStorage } from '../hooks/useLocalStorage';
-import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { add } from './redux/itemsSlice';
 
 export const App = () => {
-  const [contacts, setContacts] = useLocalStorage('contacts', []);
-  const [filter, setFilter] = useState('');
+  const dispatch = useDispatch();
+
+  const contacts = useSelector(state => state.items.contacts);
+  const filter = useSelector(state => state.items.filter);
 
   const addContacts = ({ name, number }) => {
     const errorName = contacts.find(contact => contact.name === name);
@@ -24,18 +26,9 @@ export const App = () => {
       toast.error('This contact is already added');
       return;
     }
+
     const contact = { id: nanoid(), name, number };
-    setContacts(prevState => {
-      return [...prevState, contact];
-    });
-  };
-
-  const deleteContacts = contactsId => {
-    setContacts(contacts.filter(contact => contact.id !== contactsId));
-  };
-
-  const changeFilter = e => {
-    setFilter(e.target.value);
+    dispatch(add(contact));
   };
 
   const getVisibleContact = () => {
@@ -47,19 +40,17 @@ export const App = () => {
   };
 
   getVisibleContact();
+
   return (
-    <Box bg="#E8E8E8" height="100vh">
+    <Box bg="#E8E8E8">
       <Box as="main" width="1024px" mx="auto">
         <Layout />
         <ContactForm onSubmit={addContacts} />
         <WrapList>
           <Title>Contacts</Title>
-          <Filter value={filter} onChange={changeFilter} />
+          <Filter />
           {contacts.length > 0 && (
-            <ContactList
-              contacts={getVisibleContact()}
-              onDeleteContact={deleteContacts}
-            />
+            <ContactList contacts={getVisibleContact()} />
           )}
         </WrapList>
         <ToastContainer theme="colored" autoClose={3000} />

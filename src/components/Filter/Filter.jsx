@@ -1,16 +1,19 @@
 import { FilterInput, Text, FilterLabel } from './Filter.styled';
-import PropTypes from 'prop-types';
+import { useSelector, useDispatch } from 'react-redux';
+import { chengeFilter } from 'components/redux/itemsSlice';
 
-export const Filter = ({ value, onChange }) => {
+export const Filter = () => {
+  const dispatch = useDispatch();
+  const filter = useSelector(state => state.items.filter);
+
   return (
     <FilterLabel>
       <Text>Filter</Text>
-      <FilterInput type="text" value={value} onChange={onChange} />
+      <FilterInput
+        type="text"
+        value={filter}
+        onChange={e => dispatch(chengeFilter(e.target.value))}
+      />
     </FilterLabel>
   );
-};
-
-Filter.propTypes = {
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
 };
